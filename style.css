@@ -1,0 +1,39 @@
+body {
+    font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;
+}
+.menu{
+    border-bottom: thick solid #000000;
+}
+.settingLabel{
+    margin-right: 1em;
+    font-weight: bold;
+}
+.settingChoice{
+    cursor: pointer;
+    margin-right: 0.5em;
+}
+.settingActive{
+    color: red;
+}
+td > img{
+    vertical-align: middle;
+}
+.bg_dark{
+    background-color: #222222;
+}
+.bg_light{
+    background-color: #fafafa;
+}
+
+.aa_mode{
+    width: 1em;
+}
+.aa0{
+    background-color: red;
+}
+.aa1{
+    background-color: green;
+}
+.contentContainer{
+    margin-top: 1em;
+}
