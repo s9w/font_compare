@@ -18,7 +18,7 @@ The code sample was chosen to showcase most common characters and common problem
 	
 	- number eight
 	- number zero
-	- big O (sregano)
+	- big O (oregano)
 	- small o
 	
 	- number five

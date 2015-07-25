@@ -49,7 +49,7 @@ var Fonti = React.createClass({
 
         return (
             <div>
-                <div className="menu">
+                <div className="borderBelow">
                     <Setting
                         choices={["Dark", "Light"]}
                         activeSetting={this.state.theme}
@@ -57,17 +57,18 @@ var Fonti = React.createClass({
                         label="Theme"
                     />
                     <Setting
-                        choices={["off", "on"]}
-                        activeSetting={this.state.useAA}
-                        changeFunction={this.changeTest.bind(null, "useAA")}
-                        label="Font Anti-Alias"
-                    />
-                    <Setting
                         choices={["overview", "compare"]}
                         activeSetting={this.state.mode}
                         changeFunction={this.changeTest.bind(null, "mode")}
                         label="Mode"
                     />
+                    {this.state.mode==="overview"&&
+                    <Setting
+                        choices={["off", "on"]}
+                        activeSetting={this.state.useAA}
+                        changeFunction={this.changeTest.bind(null, "useAA")}
+                        label="Font Anti-Alias"
+                        />}
                 </div>
                 <div className="contentContainer">
                     {content}
@@ -163,16 +164,18 @@ var Compare = React.createClass({
         var aaStr = this.state.fontConfigs[this.state.activeFont].aa;
         return(
             <div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Font</td>
-                            <td>Size</td>
-                            <td>AA</td>
-                        </tr>
-                        {fontElList}
-                    </tbody>
-                </table>
+                <div className="borderBelow">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Font</td>
+                                <td>Size</td>
+                                <td>AA</td>
+                            </tr>
+                            {fontElList}
+                        </tbody>
+                    </table>
+                </div>
 
                 <img
                     src={"trimmed/long_"+this.props.theme+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"}
