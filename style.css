@@ -2,7 +2,7 @@ body {
     font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;
 }
 .borderBelow{
-    border-bottom: thick solid #000000;
+    border-bottom: medium solid #000000;
 }
 .settingLabel{
     margin-right: 1em;
@@ -35,5 +35,5 @@ td > img{
     background-color: green;
 }
 .contentContainer{
-    margin-top: 1em;
+    /*margin-top: 1em;*/
 }

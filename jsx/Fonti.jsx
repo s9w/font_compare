@@ -3,8 +3,8 @@ var Overview = require('./Overview.jsx');
 var Fonti = React.createClass({
     getInitialState() {
         return({
-            mode: "overview",
-            theme: "light",
+            mode: "Overview",
+            theme: "Light",
             useAA: "on",
             selectedFonts: new Set(["Consolas", "Source Code Pro", "ProggyClean"])
         });
@@ -24,7 +24,7 @@ var Fonti = React.createClass({
     },
     render: function() {
         var content ="";
-        if(this.state.mode==="overview"){
+        if(this.state.mode==="Overview"){
             content = <Overview
                 useAA={this.state.useAA}
                 theme={this.state.theme}
@@ -32,7 +32,7 @@ var Fonti = React.createClass({
                 selectedFonts={this.state.selectedFonts}
                 />;
         }
-        else if(this.state.mode==="compare"){
+        else if(this.state.mode==="Compare"){
             var selectedFonts = [];
             for(let i=0; i<fontList.length; i++){
                 let fontName = fontList[i];
@@ -57,12 +57,12 @@ var Fonti = React.createClass({
                         label="Theme"
                     />
                     <Setting
-                        choices={["overview", "compare"]}
+                        choices={["Overview", "Compare"]}
                         activeSetting={this.state.mode}
                         changeFunction={this.changeTest.bind(null, "mode")}
                         label="Mode"
                     />
-                    {this.state.mode==="overview"&&
+                    {this.state.mode==="Overview"&&
                     <Setting
                         choices={["off", "on"]}
                         activeSetting={this.state.useAA}
@@ -178,7 +178,7 @@ var Compare = React.createClass({
                 </div>
 
                 <img
-                    src={"trimmed/long_"+this.props.theme+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"}
+                    src={"trimmed/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"}
                 />
             </div>
         );
@@ -193,8 +193,8 @@ var Setting = React.createClass({
         var thisOuter = this;
         var buttons = this.props.choices.map(function(value, i){
             return <span
-                className={"settingChoice"+(thisOuter.props.activeSetting===value.toLowerCase()?" settingActive":"")}
-                onClick={thisOuter.changeSetting.bind(null, value.toLowerCase())}
+                className={"settingChoice"+(thisOuter.props.activeSetting===value?" settingActive":"")}
+                onClick={thisOuter.changeSetting.bind(null, value)}
                 key={i}>{value}</span>;
         });
 

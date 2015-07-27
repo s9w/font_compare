@@ -59,7 +59,8 @@ norm_sizes = {
 	"Input": 8,
 	"Monoid": 10,
 	"ProFontWindows": 11,
-	"Ubuntu Mono": 10
+	"Ubuntu Mono": 10,
+	"Iosevka": 10
 }
 
 
