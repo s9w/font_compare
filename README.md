@@ -27,3 +27,7 @@ The code sample was chosen to showcase most common characters and common problem
 Following are some brackets, special characters, double underscore and a "hashtag".
 
 The capturing process is automated, so font requests are welcome
+
+## Font-specific notes
+- **Monoid** and **Input** are both highly customizable, offering alternatives for commonly controversial letters. This site features only the default versions.
+- **Office Code Pro** and **Meslo** also offer a Dotted Zero version.
