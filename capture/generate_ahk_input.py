@@ -10,7 +10,7 @@ fonts = ["Consolas", "Monoid",
 "Ubuntu Mono",
 "Bitstream Vera Sans Mono", "Input", "Meslo LG S", "Meslo LG M", "Meslo LG L", 
 "DejaVu Sans Mono", "Droid Sans Mono", "Fira Mono", "Envy Code R", "monoOne", 
-"Fantasque Sans Mono", "Hermit", "Liberation Mono", 
+"Fantasque Sans Mono", "Hermit", "Liberation Mono", "Iosevka",
 "Anonymous Pro", "ProggyClean", "Dina", "ProFontWindows"]
 
 # settings
@@ -44,6 +44,7 @@ def extend_cfg(font, sizes, aa_settings):
 extend_cfg("Anonymous Pro", [7,8,9,10], ["aa0"])
 extend_cfg("Anonymous Pro", [11,12], aa_defaults)
 extend_cfg("ProggyClean", [9], ["aa0"])
+extend_cfg("Iosevka", [8,9,10,11], aa_defaults)
 extend_cfg("Dina", [8,9,10], ["aa0"])
 extend_cfg("ProFontWindows", [7,8,9,10,11,12], ["aa0"])
 default_cfg = [(size, aa) for size in size_defaults for aa in aa_defaults]
