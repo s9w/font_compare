@@ -11,6 +11,7 @@ fonts = ["Consolas", "Monoid",
 "Bitstream Vera Sans Mono", "Input", "Meslo LG S", "Meslo LG M", "Meslo LG L", 
 "DejaVu Sans Mono", "Droid Sans Mono", "Fira Mono", "Envy Code R", "monoOne", 
 "Fantasque Sans Mono", "Hermit", "Liberation Mono", "Iosevka", "OCR A Extended", "Inconsolata-dz",
+"Luculent",
 "Anonymous Pro", "ProggyClean", "Dina", "ProFontWindows", "FixedSys Excelsior 3.01", "Terminus"]
 
 # settings
