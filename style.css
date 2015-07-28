@@ -21,7 +21,15 @@ td > img{
 .bg_dark{
     background-color: #222222;
 }
+.fontContainer_dark{
+    padding: 0.5em;
+    background-color: #222222;
+}
 .bg_light{
+    background-color: #fafafa;
+}
+.fontContainer_light{
+    padding: 0.5em;
     background-color: #fafafa;
 }
 

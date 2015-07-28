@@ -177,9 +177,11 @@ var Compare = React.createClass({
                     </table>
                 </div>
 
-                <img
-                    src={"trimmed/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"}
-                />
+                <div className={"fontContainer_"+this.props.theme.toLowerCase()}>
+                    <img
+                        src={"trimmed/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"}
+                    />
+                </div>
             </div>
         );
     }
