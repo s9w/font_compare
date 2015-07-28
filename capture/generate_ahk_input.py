@@ -55,15 +55,20 @@ default_cfg = [(size, aa) for size in size_defaults for aa in aa_defaults]
 inputs = []
 js_fontInfo = {}
 
-default_norm_size = 9
+default_norm_size = 10
 norm_sizes = {
-	"Envy Code R": 10,
-	"Fantasque Sans Mono": 10,
-	"Input": 8,
-	"Monoid": 10,
-	"ProFontWindows": 11,
-	"Ubuntu Mono": 10,
-	"Iosevka": 10,
+	"Anonymous Pro": 11,
+	"Consolas": 11,
+	"Envy Code R": 11,
+	"Fantasque Sans Mono": 11,
+	"Input": 10,
+	"Monoid": 11,
+	"monoOne": 11,
+	"ProFontWindows": 12,
+	"Ubuntu Mono": 12,
+	"Iosevka": 11,
+	"Luculent": 11,
+	"ProggyClean": 9,
 	"FixedSys Excelsior 3.01": 12,
 	"Terminus": 11,
 }
