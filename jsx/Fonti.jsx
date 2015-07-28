@@ -6,6 +6,7 @@ var Fonti = React.createClass({
             mode: "Overview",
             theme: "Light",
             useAA: "on",
+            renderer: "default",
             selectedFonts: new Set(["Consolas", "Source Code Pro", "ProggyClean"])
         });
     },
@@ -28,6 +29,7 @@ var Fonti = React.createClass({
             content = <Overview
                 useAA={this.state.useAA}
                 theme={this.state.theme}
+                renderer={this.state.renderer}
                 selectFont={this.selectFont}
                 selectedFonts={this.state.selectedFonts}
                 />;
@@ -43,6 +45,7 @@ var Fonti = React.createClass({
             content =
                 <Compare
                     selectedFonts={selectedFonts}
+                    renderer={this.state.renderer}
                     theme={this.state.theme}
                 />;
         }
@@ -56,6 +59,12 @@ var Fonti = React.createClass({
                         changeFunction={this.changeTest.bind(null, "theme")}
                         label="Theme"
                     />
+                    <Setting
+                        choices={["default", "gdipp"]}
+                        activeSetting={this.state.renderer}
+                        changeFunction={this.changeTest.bind(null, "renderer")}
+                        label="Renderer"
+                        />
                     <Setting
                         choices={["Overview", "Compare"]}
                         activeSetting={this.state.mode}
@@ -179,7 +188,7 @@ var Compare = React.createClass({
 
                 <div className={"fontContainer_"+this.props.theme.toLowerCase()}>
                     <img
-                        src={"trimmed/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"}
+                        src={"trimmed/"+this.props.renderer+"/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"}
                     />
                 </div>
             </div>

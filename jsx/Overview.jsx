@@ -24,7 +24,7 @@ module.exports = React.createClass({
                             />
                     </td>
                     <td className={"bg_"+this.props.theme.toLowerCase()}>
-                        <img src={"trimmed/short_"+this.props.theme.toLowerCase()+"_"+fontName+"_"+fontInfo[fontName].defaultSize+"_"+aaMode+".png"} />
+                        <img src={"trimmed/"+this.props.renderer+"/short_"+this.props.theme.toLowerCase()+"_"+fontName+"_"+fontInfo[fontName].defaultSize+"_"+aaMode+".png"} />
                     </td>
                 </tr>
             )
