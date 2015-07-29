@@ -3,12 +3,25 @@ body {
 }
 .Light{
     background-color: #fafafa;
+    /*color: black;*/
 }
 .Dark{
     background-color: #222222;
     color: white;
 }
 
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+.Light a{
+    color: black;
+}
+.Dark a{
+    color: white;
+}
 
 .Light .borderBelow{
     border-bottom: medium solid #000000;

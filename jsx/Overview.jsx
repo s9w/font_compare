@@ -1,3 +1,13 @@
+var urls = {
+    "Anonymous Pro": "http://www.marksimonson.com/fonts/view/anonymous-pro",
+    "Bitstream Vera Sans Mono": "https://www.gnome.org/fonts/",
+    "DejaVu Sans Mono": "http://dejavu-fonts.org/",
+    "Dina": "https://www.donationcoder.com/Software/Jibz/Dina/",
+    "Envy Code R": "https://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released",
+    "Fantasque Sans Mono": "https://github.com/belluzj/fantasque-sans",
+    "Fira Mono": "https://mozilla.github.io/Fira/"
+};
+
 module.exports = React.createClass({
     selectFont(fontName){
         this.props.selectFont(fontName);
@@ -12,9 +22,15 @@ module.exports = React.createClass({
             else
                 aaMode = "aa0";
 
+            var fontElement;
+            if(fontName in urls){
+                fontElement = <td><a href={urls[fontName]}>{fontName}</a></td>;
+            }else{
+                fontElement = <td>{fontName}</td>;
+            }
             font_rows.push(
                 <tr key={i}>
-                    <td>{fontName}</td>
+                    {fontElement}
                     <td className={"aa_mode "+aaMode}></td>
                     <td>
                         <input
