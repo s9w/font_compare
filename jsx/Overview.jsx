@@ -23,7 +23,7 @@ module.exports = React.createClass({
                             onChange={this.selectFont.bind(null, fontName)}
                             />
                     </td>
-                    <td className={"bg_"+this.props.theme.toLowerCase()}>
+                    <td>
                         <img src={"trimmed/"+this.props.renderer+"/short_"+this.props.theme.toLowerCase()+"_"+fontName+"_"+fontInfo[fontName].defaultSize+"_"+aaMode+".png"} />
                     </td>
                 </tr>

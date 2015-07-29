@@ -1,9 +1,22 @@
 body {
     font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;
 }
-.borderBelow{
+.Light{
+    background-color: #fafafa;
+}
+.Dark{
+    background-color: #222222;
+    color: white;
+}
+
+
+.Light .borderBelow{
     border-bottom: medium solid #000000;
 }
+.Dark .borderBelow{
+    border-bottom: medium solid #ffffff;
+}
+
 .settingLabel{
     margin-right: 1em;
     font-weight: bold;
@@ -12,25 +25,18 @@ body {
     cursor: pointer;
     margin-right: 0.5em;
 }
-.settingActive{
+.Light .settingActive{
     color: red;
 }
+.Dark .settingActive{
+    color: #ff9295;
+}
+
 td > img{
     vertical-align: middle;
 }
-.bg_dark{
-    background-color: #222222;
-}
-.fontContainer_dark{
+.fontContainer{
     padding: 0.5em;
-    background-color: #222222;
-}
-.bg_light{
-    background-color: #fafafa;
-}
-.fontContainer_light{
-    padding: 0.5em;
-    background-color: #fafafa;
 }
 
 .aa_mode{
@@ -43,5 +49,5 @@ td > img{
     background-color: green;
 }
 .contentContainer{
-    /*margin-top: 1em;*/
+
 }

@@ -51,7 +51,7 @@ var Fonti = React.createClass({
         }
 
         return (
-            <div>
+            <div className={this.state.theme}>
                 <div className="borderBelow">
                     <Setting
                         choices={["Dark", "Light"]}
@@ -186,7 +186,7 @@ var Compare = React.createClass({
                     </table>
                 </div>
 
-                <div className={"fontContainer_"+this.props.theme.toLowerCase()}>
+                <div className={"fontContainer"}>
                     <img
                         src={"trimmed/"+this.props.renderer+"/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"}
                     />
