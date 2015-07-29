@@ -8,7 +8,7 @@ There is also the choice between the default Windows font renderer (ClearType) a
  
 In the **overview** mode you can quickly compare all available fonts with a fixed font size. You can select fonts with the checkboxes to mark them for comparison. The red/green column is an AA indicator.
  
-In the **compare** mode the code sample is bigger and there is a wider range of font sizes to chose from. The screenshot is for the activated font (red). It can be switched quickly between the selections by hovering over them.
+In the **compare** mode the code sample is bigger and there is a wider range of font sizes to chose from. The screenshot is for the activated font (red). It can be switched quickly between the selections by hovering over them. In that mode, there's also a 2x zoom option for close inspection or people with really high dpi screens. The zoom is filterless, so no interpolation (1 pixel to 4 pixel).
 
 The code sample was chosen to showcase most common characters and problems with fonts. The characters in the first line after the alphanumerics are:
 

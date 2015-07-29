@@ -7,7 +7,8 @@ var Fonti = React.createClass({
             theme: "Light",
             useAA: "on",
             renderer: "default",
-            selectedFonts: new Set(["Consolas", "Source Code Pro", "ProggyClean"])
+            selectedFonts: new Set(["Consolas", "Source Code Pro", "ProggyClean"]),
+            zoom: "1x"
         });
     },
     changeTest(settingName, newValue){
@@ -47,6 +48,7 @@ var Fonti = React.createClass({
                     selectedFonts={selectedFonts}
                     renderer={this.state.renderer}
                     theme={this.state.theme}
+                    zoom={this.state.zoom}
                 />;
         }
 
@@ -77,6 +79,13 @@ var Fonti = React.createClass({
                         activeSetting={this.state.useAA}
                         changeFunction={this.changeTest.bind(null, "useAA")}
                         label="Font Anti-Alias"
+                        />}
+                    {this.state.mode==="Compare"&&
+                    <Setting
+                        choices={["1x", "2x"]}
+                        activeSetting={this.state.zoom}
+                        changeFunction={this.changeTest.bind(null, "zoom")}
+                        label="Zoom"
                         />}
                 </div>
                 <div className="contentContainer">
@@ -172,6 +181,18 @@ var Compare = React.createClass({
 
         var sizeStr = this.state.fontConfigs[this.state.activeFont].size;
         var aaStr = this.state.fontConfigs[this.state.activeFont].aa;
+        var imgEl;
+        if(this.props.zoom==="1x"){
+            imgEl = <img
+                src={"trimmed/"+this.props.renderer+"/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"}
+                />;
+        }else{
+            imgEl = <Zoomed
+                imgUrl={"trimmed/"+this.props.renderer+"/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"}
+                width={1100}
+                height={300}
+                />
+        }
         return(
             <div>
                 <div className="borderBelow">
@@ -188,11 +209,39 @@ var Compare = React.createClass({
                 </div>
 
                 <div className={"fontContainer"}>
-                    <img
-                        src={"trimmed/"+this.props.renderer+"/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"}
-                    />
+                    {imgEl}
                 </div>
             </div>
+        );
+    }
+});
+
+var Zoomed = React.createClass({
+    componentDidMount: function() {
+        this.update();
+    },
+
+    componentDidUpdate: function() {
+        this.update();
+    },
+    update: function(){
+        var canvas = this.refs.canvas.getDOMNode();
+        var ctx = canvas.getContext('2d');
+        var sourceImage = new Image();
+        sourceImage.src = this.props.imgUrl;
+        ctx.mozImageSmoothingEnabled = false;
+        ctx.msImageSmoothingEnabled = false;
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(sourceImage, 0, 0, sourceImage.width, sourceImage.height, 0, 0, sourceImage.width*2, sourceImage.height*2);
+    },
+    render: function(){
+        return(
+            <canvas
+                style={{height: this.props.height*2, width: this.props.width*2}}
+                height={this.props.height*2}
+                width={this.props.width*2}
+                ref="canvas"
+                />
         );
     }
 });
