@@ -92,9 +92,10 @@ var Compare = React.createClass({
         var fontConfigs = {};
         for(let i=0; i<this.props.selectedFonts.length; i++){
             var fontName = this.props.selectedFonts[i];
+            let defaultSizeInt = Math.round(fontInfos[fontName].defaultSize);
             fontConfigs[fontName] = {
-                size: fontInfo[fontName].defaultSize,
-                aa: fontInfo[fontName].hasAA[fontInfo[fontName].defaultSize]?"aa1":"aa0"
+                size: defaultSizeInt,
+                aa: fontInfos[fontName]["sizes_aa1"].indexOf(defaultSizeInt)!==-1?"aa1":"aa0"
             };
         }
 
@@ -121,9 +122,9 @@ var Compare = React.createClass({
             let fontName = this.props.selectedFonts[i];
 
             let sizes = [];
-            for(let j=0; j<fontInfo[fontName]["sizes"].length; j++){
-                let size = fontInfo[fontName]["sizes"][j];
-                var commaStr = (j<fontInfo[fontName]["sizes"].length-1)?",":"";
+            for(let j=0; j<fontInfos[fontName]["sizes_aa0"].length; j++){
+                let size = fontInfos[fontName]["sizes_aa0"][j];
+                var commaStr = (j<fontInfos[fontName]["sizes_aa0"].length-1)?",":"";
                 sizes.push(
                     <span
                         onClick={this.changeFontMode.bind(null, fontName, "size", size)}
@@ -142,7 +143,7 @@ var Compare = React.createClass({
                     key="0">
                     off</span>
             );
-            if(fontInfo[fontName].hasAA[this.state.fontConfigs[fontName].size]) {
+            if(fontInfos[fontName]["sizes_aa1"].indexOf(this.state.fontConfigs[fontName].size)!==-1) {
                 aaSettings.push(
                     <span
                         className={"settingChoice" + (this.state.fontConfigs[fontName].aa==="aa1"?" settingActive":"")}

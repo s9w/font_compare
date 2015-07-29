@@ -1,60 +1,62 @@
+import copy
 import json
 
-fonts = ["Consolas", "Monoid", 
-"Source Code Pro Light", 
-"Source Code Pro", 
-"Source Code Pro Medium", 
-"Office Code Pro Light", 
-"Office Code Pro", 
-"Office Code Pro Medium", 
-"Ubuntu Mono",
-"Bitstream Vera Sans Mono", "Input", "Meslo LG S", "Meslo LG M", "Meslo LG L", 
-"DejaVu Sans Mono", "Droid Sans Mono", "Fira Mono", "Envy Code R", "monoOne", 
-"Fantasque Sans Mono", "Hermit", "Liberation Mono", "Iosevka", "OCR A Extended", "Inconsolata-dz",
-"Luculent", "PragmataPro", "Monofur",
-"M+ 1m regular", "M+ 1m medium", "M+ 1m light", 
-"Anonymous Pro", "ProggyClean", "Dina", "ProFontWindows", "FixedSys Excelsior 3.01", "Terminus"]
+fonts = [
+	"Source Code Pro Light", "Source Code Pro", "Source Code Pro Medium",
+	"Office Code Pro Light", "Office Code Pro", "Office Code Pro Medium",
+	"Meslo LG S", "Meslo LG M", "Meslo LG L",
+	"M+ 1m regular", "M+ 1m medium", "M+ 1m light",
 
-# settings
+	"Consolas", "Monoid", "Ubuntu Mono",
+	"Bitstream Vera Sans Mono", "Input",
+	"DejaVu Sans Mono", "Droid Sans Mono", "Fira Mono", "Envy Code R", "monoOne",
+	"Fantasque Sans Mono", "Hermit", "Liberation Mono", "Iosevka", "OCR A Extended", "Inconsolata-dz",
+	"Luculent", "PragmataPro", "Monofur",
+	"Anonymous Pro", "ProggyClean", "Dina", "ProFontWindows", "FixedSys Excelsior 3.01", "Terminus"]
+
 aa_defaults = ["aa1", "aa0"]
 size_defaults = [8,9,10,11,12]
-code_length_choices = ["short", "long"]
-theme_choices = ["light", "dark"]
+fontInfos = {}
 
-cfg_sizes_aa = {}
-font_sizes = {}
-has_size_aa = {}
-def extend_cfg(font, sizes, aa_settings):
-	part = [(size, aa) for size in sizes for aa in aa_settings]
-	if font in cfg_sizes_aa:
-		cfg_sizes_aa[font].extend(part)
+def extend_fontInfo(font, sizes, aa_settings):
+	def get_fontInfo(sizes_param, aa_param):
+		if "aa1" in aa_param:
+			aa_sizes = sizes_param
+		else:
+			aa_sizes = []
+
+		return {
+			"sizes_aa0": sizes_param,
+			"sizes_aa1": aa_sizes
+		}
+	def merge_fontInfo(fontInfo1, fontInfo2):
+		return {
+			"sizes_aa0": fontInfo1["sizes_aa0"] + fontInfo2["sizes_aa0"],
+			"sizes_aa1": fontInfo1["sizes_aa1"] + fontInfo2["sizes_aa1"],
+		}
+
+	if font in fontInfos:
+		fontInfos[font] = merge_fontInfo(fontInfos[font], get_fontInfo(sizes, aa_settings))
 	else:
-		cfg_sizes_aa[font] = part
+		fontInfos[font] = get_fontInfo(sizes, aa_settings)
 
-	if font in font_sizes:
-		font_sizes[font].extend(sizes)
-	else:
-		font_sizes[font] = sizes
+extend_fontInfo("Anonymous Pro", [7,8,9,10], ["aa0"])
+extend_fontInfo("Anonymous Pro", [11,12], aa_defaults)
+extend_fontInfo("ProggyClean", [9], ["aa0"])
+extend_fontInfo("Iosevka", [8,9,10,11], aa_defaults)
+extend_fontInfo("Dina", [8,9,10], ["aa0"])
+extend_fontInfo("ProFontWindows", [7,8,9,10,11,12], ["aa0"])
+extend_fontInfo("FixedSys Excelsior 3.01", [12], ["aa0"])
+extend_fontInfo("Terminus", [10,11,12], ["aa0"])
 
-	aa_bool = "aa1" in aa_settings
-	size_aa = {size: aa_bool for size in sizes}
-	if font in has_size_aa:
-		has_size_aa[font].update(size_aa)
-	else:
-		has_size_aa[font] = size_aa
+default_fontInfo = {
+	"sizes_aa0": size_defaults,
+	"sizes_aa1": size_defaults
+}
 
-extend_cfg("Anonymous Pro", [7,8,9,10], ["aa0"])
-extend_cfg("Anonymous Pro", [11,12], aa_defaults)
-extend_cfg("ProggyClean", [9], ["aa0"])
-extend_cfg("Iosevka", [8,9,10,11], aa_defaults)
-extend_cfg("Dina", [8,9,10], ["aa0"])
-extend_cfg("ProFontWindows", [7,8,9,10,11,12], ["aa0"])
-extend_cfg("FixedSys Excelsior 3.01", [12], ["aa0"])
-extend_cfg("Terminus", [10,11,12], ["aa0"])
-default_cfg = [(size, aa) for size in size_defaults for aa in aa_defaults]
+fontInfos.update({font: default_fontInfo for font in fonts if font not in fontInfos})
 
 inputs = []
-js_fontInfo = {}
 
 default_norm_size = 10
 norm_sizes = {
@@ -62,9 +64,9 @@ norm_sizes = {
 	"Consolas": 11,
 	"Envy Code R": 11,
 	"Fantasque Sans Mono": 11,
-	"Input": 10,
+	"Input": 8,
 	"Monoid": 11,
-	"monoOne": 11,
+	"monoOne": 10.5,
 	"ProFontWindows": 12,
 	"Ubuntu Mono": 12,
 	"Iosevka": 11,
@@ -74,46 +76,30 @@ norm_sizes = {
 	"ProggyClean": 9,
 	"FixedSys Excelsior 3.01": 12,
 	"Terminus": 11,
-	"M+ 1m regular": 12, 
-	"M+ 1m medium": 12, 
-	"M+ 1m light": 12 
+	"M+ 1m regular": 12,
+	"M+ 1m medium": 12,
+	"M+ 1m light": 12
 }
-
-
-def font_modes(sizes_aa):
-	modes = {}
-	for size, aa in sizes_aa:
-		if size in modes:
-			modes[size].append(aa)
-		else:
-			modes[size] = [aa]
-	return modes
-
 
 for font in fonts:
 	norm_size = norm_sizes.get(font, default_norm_size)
-	has_norm_size_aa = False
-	
-	sizes_aa = cfg_sizes_aa.get(font, default_cfg)
-	if (norm_size, "aa1") in sizes_aa:
-		has_norm_size_aa = True
+	fontInfo = copy.copy(fontInfos[font])
+	fontInfo["defaultSize"] = norm_size
+	fontInfos[font] = fontInfo
 
-	inputs.extend( [",".join([code_len, theme, font, str(s), aa])+"\n"
-		for s, aa in sizes_aa
-		for theme in theme_choices
-		for code_len in code_length_choices
-		])
+for font in fonts:
+	norm_size = norm_sizes.get(font, default_norm_size)
+	for theme in ["light", "dark"]:
+		code_len = "long"
+		for aa in aa_defaults:
+			for size in fontInfos.get(font, default_fontInfo)["sizes_" + aa]:
+				inputs.extend([",".join([code_len, theme, font, str(size), aa]) + "\n"])
 
-	if has_norm_size_aa:
-		aa_string = "aa1"
-	else:
-		aa_string = "aa0"
-	js_fontInfo[font] = {
-		"sizes": font_sizes.get(font, size_defaults),
-		"hasAA": has_size_aa.get(font, {size: True for size in size_defaults}),
-		"defaultSize": norm_size
-		}
-	# js_list_short.append([font, js_filename])
+		code_len = "short"
+		for aa in aa_defaults:
+			size = norm_sizes.get(font, default_norm_size)
+			if round(size) in fontInfos.get(font, default_fontInfo)["sizes_" + aa]:
+				inputs.extend([",".join([code_len, theme, font, str(size), aa]) + "\n"])
 
 # biggest:
 # long,Input,12,aa1,dark
@@ -121,11 +107,6 @@ for font in fonts:
 with open("ahk_input.csv", "w", encoding="utf-8") as f:
 	f.write("".join(inputs))
 
-# print(js_list_short)
 with open("../font_info.js", "w", encoding="utf-8") as f:
 	f.write("var fontList = {};\n".format(json.dumps(sorted(fonts, key=str.lower), indent="\t")))
-	f.write("var fontInfo = {};".format(json.dumps(js_fontInfo, indent="\t")))
-# print(len(js_list_short))
-
-# with open("font_info.json", "w", encoding="utf-8") as f:
-# 	f.write("".join(inputs))
+	f.write("var fontInfos = {};".format(json.dumps(fontInfos, indent="\t")))

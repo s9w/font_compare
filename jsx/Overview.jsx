@@ -17,8 +17,9 @@ module.exports = React.createClass({
         for(let i=0; i<fontList.length; i++){
             let fontName = fontList[i];
             var aaMode;
+            //console.log(fontName);
             if(this.props.useAA==="on")
-                aaMode = (fontInfo[fontName].hasAA[fontInfo[fontName].defaultSize] ? "aa1" : "aa0");
+                aaMode = (fontInfos[fontName]["sizes_aa1"].indexOf(fontInfos[fontName].defaultSize)!==-1? "aa1" : "aa0");
             else
                 aaMode = "aa0";
 
@@ -40,7 +41,7 @@ module.exports = React.createClass({
                             />
                     </td>
                     <td>
-                        <img src={"trimmed/"+this.props.renderer+"/short_"+this.props.theme.toLowerCase()+"_"+fontName+"_"+fontInfo[fontName].defaultSize+"_"+aaMode+".png"} />
+                        <img src={"trimmed/"+this.props.renderer+"/short_"+this.props.theme.toLowerCase()+"_"+fontName+"_"+fontInfos[fontName].defaultSize+"_"+aaMode+".png"} />
                     </td>
                 </tr>
             )
