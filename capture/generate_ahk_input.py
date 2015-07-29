@@ -12,6 +12,7 @@ fonts = ["Consolas", "Monoid",
 "DejaVu Sans Mono", "Droid Sans Mono", "Fira Mono", "Envy Code R", "monoOne", 
 "Fantasque Sans Mono", "Hermit", "Liberation Mono", "Iosevka", "OCR A Extended", "Inconsolata-dz",
 "Luculent", "PragmataPro",
+"M+ 1m regular", "M+ 1m medium", "M+ 1m light", 
 "Anonymous Pro", "ProggyClean", "Dina", "ProFontWindows", "FixedSys Excelsior 3.01", "Terminus"]
 
 # settings
