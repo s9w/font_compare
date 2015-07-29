@@ -11,7 +11,7 @@ fonts = ["Consolas", "Monoid",
 "Bitstream Vera Sans Mono", "Input", "Meslo LG S", "Meslo LG M", "Meslo LG L", 
 "DejaVu Sans Mono", "Droid Sans Mono", "Fira Mono", "Envy Code R", "monoOne", 
 "Fantasque Sans Mono", "Hermit", "Liberation Mono", "Iosevka", "OCR A Extended", "Inconsolata-dz",
-"Luculent",
+"Luculent", "PragmataPro",
 "Anonymous Pro", "ProggyClean", "Dina", "ProFontWindows", "FixedSys Excelsior 3.01", "Terminus"]
 
 # settings
@@ -68,6 +68,7 @@ norm_sizes = {
 	"Ubuntu Mono": 12,
 	"Iosevka": 11,
 	"Luculent": 11,
+	"PragmataPro": 11,
 	"ProggyClean": 9,
 	"FixedSys Excelsior 3.01": 12,
 	"Terminus": 11,
