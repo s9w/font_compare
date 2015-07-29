@@ -118,7 +118,7 @@ with open("ahk_input.csv", "w", encoding="utf-8") as f:
 
 # print(js_list_short)
 with open("../font_info.js", "w", encoding="utf-8") as f:
-	f.write("var fontList = {};\n".format(json.dumps(fonts, indent="\t")))
+	f.write("var fontList = {};\n".format(json.dumps(sorted(fonts, key=str.lower), indent="\t")))
 	f.write("var fontInfo = {};".format(json.dumps(js_fontInfo, indent="\t")))
 # print(len(js_list_short))
 
