@@ -9,7 +9,11 @@ SetView(FontName, FontSize, aa, color)
 {
 	; Set font settings
 	Send, view.run_command("set_setting", {{}"setting": "font_size", "value": %FontSize%{}}){Enter}
-	Send, view.run_command("set_setting", {{}"setting": "font_face", "value": "%FontName%"{}}){Enter}
+
+	Send, view.run_command("set_setting", {{}"setting": "font_face", "value": "
+	SendRaw, %FontName%
+	Send, "{}}){Enter}
+
 	Send, view.run_command("set_setting", {{}"setting": "gutter", "value": False{}}){Enter}
 
 	if (color="light"){
