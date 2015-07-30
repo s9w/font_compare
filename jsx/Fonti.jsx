@@ -181,18 +181,14 @@ var Compare = React.createClass({
 
         var sizeStr = this.state.fontConfigs[this.state.activeFont].size;
         var aaStr = this.state.fontConfigs[this.state.activeFont].aa;
-        var imgEl;
-        if(this.props.zoom==="1x"){
-            imgEl = <img
-                src={"trimmed/"+this.props.renderer+"/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"}
-                />;
+
+        var imgUrl;
+        if(this.props.zoom==="2x"){
+            imgUrl = "trimmed/"+this.props.renderer+"/zoom/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"
         }else{
-            imgEl = <Zoomed
-                imgUrl={"trimmed/"+this.props.renderer+"/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"}
-                width={1100}
-                height={300}
-                />
+            imgUrl = "trimmed/"+this.props.renderer+"/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"
         }
+
         return(
             <div>
                 <div className="borderBelow">
@@ -209,39 +205,9 @@ var Compare = React.createClass({
                 </div>
 
                 <div className={"fontContainer"}>
-                    {imgEl}
+                    <img src={imgUrl} />
                 </div>
             </div>
-        );
-    }
-});
-
-var Zoomed = React.createClass({
-    componentDidMount: function() {
-        this.update();
-    },
-
-    componentDidUpdate: function() {
-        this.update();
-    },
-    update: function(){
-        var canvas = this.refs.canvas.getDOMNode();
-        var ctx = canvas.getContext('2d');
-        var sourceImage = new Image();
-        sourceImage.src = this.props.imgUrl;
-        ctx.mozImageSmoothingEnabled = false;
-        ctx.msImageSmoothingEnabled = false;
-        ctx.imageSmoothingEnabled = false;
-        ctx.drawImage(sourceImage, 0, 0, sourceImage.width, sourceImage.height, 0, 0, sourceImage.width*2, sourceImage.height*2);
-    },
-    render: function(){
-        return(
-            <canvas
-                style={{height: this.props.height*2, width: this.props.width*2}}
-                height={this.props.height*2}
-                width={this.props.width*2}
-                ref="canvas"
-                />
         );
     }
 });

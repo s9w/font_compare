@@ -9,7 +9,9 @@ js/script.js: jsx/* Makefile
 
 .PHONY: trimmed
 trimmed: capture/ss/*.png
-	cp capture/ss/*.png trimmed
+	mv capture/ss/* trimmed
 	mogrify -crop 1200x600+12+84 -trim trimmed/*.png
 	mogrify -background "#222222" -splice 1x0 trimmed/short_dark_*_aa0.png
 	mogrify -background "#fafafa" -splice 1x0 trimmed/short_light_*_aa0.png
+	cp trimmed/long_*.png trimmed/zoom
+	mogrify -filter Point -resize 200% trimmed/zoom/*.png
