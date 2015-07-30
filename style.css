@@ -1,13 +1,16 @@
 body {
     font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;
+    margin: 0;
 }
 .Light{
     background-color: #fafafa;
-    /*color: black;*/
 }
 .Dark{
     background-color: #222222;
     color: white;
+}
+#mainDiv{
+    padding: 0.5em;
 }
 
 a{
@@ -38,6 +41,19 @@ a:hover{
     cursor: pointer;
     margin-right: 0.5em;
 }
+
+.button{
+    cursor: pointer;
+    min-width: 2em;
+    text-align: center;
+}
+.Light .button:hover{
+    color: red;
+}
+.Dark .button:hover{
+    color: #ff9295;
+}
+
 .Light .settingActive{
     color: red;
 }
@@ -50,6 +66,7 @@ td > img{
 }
 .fontContainer{
     padding: 0.5em;
+    padding-bottom: 3em;
 }
 
 .aa_mode{

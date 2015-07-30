@@ -7,7 +7,7 @@ var Fonti = React.createClass({
             theme: "Light",
             useAA: "on",
             renderer: "default",
-            selectedFonts: new Set(["Consolas", "Source Code Pro", "ProggyClean"]),
+            selectedFonts: new Set(["Consolas", "Source Code Pro", "Ubuntu Mono"]),
             zoom: "1x"
         });
     },
@@ -23,6 +23,13 @@ var Fonti = React.createClass({
         else
             newSelectedFonts.add(fontName);
         this.setState({selectedFonts: newSelectedFonts});
+    },
+    removeFont(fontName){
+        var newSelectedFonts = this.state.selectedFonts;
+        newSelectedFonts.delete(fontName);
+        this.setState({
+            selectedFonts: newSelectedFonts
+        });
     },
     render: function() {
         var content ="";
@@ -49,11 +56,12 @@ var Fonti = React.createClass({
                     renderer={this.state.renderer}
                     theme={this.state.theme}
                     zoom={this.state.zoom}
+                    removeFont={this.removeFont}
                 />;
         }
 
         return (
-            <div className={this.state.theme}>
+            <div className={this.state.theme} id="mainDiv">
                 <div className="borderBelow">
                     <Setting
                         choices={["Dark", "Light"]}
@@ -125,6 +133,9 @@ var Compare = React.createClass({
             activeFont: fontName
         });
     },
+    removeFont(fontName){
+        this.props.removeFont(fontName);
+    },
     render: function(){
         var fontElList = [];
         for(let i=0; i<this.props.selectedFonts.length; i++){
@@ -165,6 +176,9 @@ var Compare = React.createClass({
             fontElList.push(
                 <tr key={fontName}>
                     <td
+                        className="button"
+                        onClick={this.removeFont.bind(null, fontName)}>X</td>
+                    <td
                         className={"settingLabel" + (this.state.activeFont===fontName?" settingActive":"")}
                         onMouseOver={this.activateFont.bind(null, fontName)}>
                         {fontName}
@@ -195,6 +209,7 @@ var Compare = React.createClass({
                     <table>
                         <tbody>
                             <tr>
+                                <td></td>
                                 <td>Font</td>
                                 <td>Size</td>
                                 <td>AA</td>
