@@ -11,7 +11,7 @@ fonts = [
 	"Bitstream Vera Sans Mono", "Input",
 	"DejaVu Sans Mono", "Droid Sans Mono", "Fira Mono", "Envy Code R", "monoOne",
 	"Fantasque Sans Mono", "Hermit", "Liberation Mono", "Iosevka", "OCR A Extended", "Inconsolata-dz",
-	"Luculent", "PragmataPro", "Monofur",
+	"Luculent", "PragmataPro", "Monofur", "OpenDyslexicMono",
 	"Anonymous Pro", "ProggyClean", "Dina", "ProFontWindows", "FixedSys Excelsior 3.01", "Terminus"]
 
 aa_defaults = ["aa1", "aa0"]
@@ -73,6 +73,7 @@ norm_sizes = {
 	"Luculent": 11,
 	"Monofur": 11,
 	"PragmataPro": 11,
+	"OpenDyslexicMono": 8,
 	"ProggyClean": 9,
 	"FixedSys Excelsior 3.01": 12,
 	"Terminus": 11,
