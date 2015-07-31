@@ -11,7 +11,7 @@ fonts = [
 	"Bitstream Vera Sans Mono", "Input",
 	"DejaVu Sans Mono", "Droid Sans Mono", "Fira Mono", "Envy Code R", "monoOne",
 	"Fantasque Sans Mono", "Hermit", "Liberation Mono", "Iosevka", "OCR A Extended", "Inconsolata-dz",
-	"Luculent", "PragmataPro", "Monofur", "OpenDyslexicMono",
+	"Luculent", "PragmataPro", "Monofur", "OpenDyslexicMono", "Courier Prime",
 	"Anonymous Pro", "ProggyClean", "Dina", "ProFontWindows", "FixedSys Excelsior 3.01", "Terminus"]
 
 aa_defaults = ["aa1", "aa0"]
