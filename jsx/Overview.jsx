@@ -35,7 +35,10 @@ var urls = {
     "Source Code Pro Light": "http://adobe-fonts.github.io/source-code-pro/",
     "Source Code Pro Medium": "http://adobe-fonts.github.io/source-code-pro/",
     "Terminus": "http://terminus-font.sourceforge.net/",
-    "Ubuntu Mono": "http://font.ubuntu.com/"
+    "Ubuntu Mono": "http://font.ubuntu.com/",
+    "PT Mono": "http://www.paratype.com/public/",
+    "MonteCarlo": "http://www.bok.net/MonteCarlo/",
+    "Mensch": "http://robey.lag.net/2010/06/21/mensch-font.html"
 };
 
 module.exports = React.createClass({

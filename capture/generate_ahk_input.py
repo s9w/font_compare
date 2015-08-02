@@ -12,6 +12,7 @@ fonts = [
 	"DejaVu Sans Mono", "Droid Sans Mono", "Fira Mono", "Envy Code R", "monoOne",
 	"Fantasque Sans Mono", "Hermit", "Liberation Mono", "Iosevka", "OCR A Extended", "Inconsolata-dz",
 	"Luculent", "PragmataPro", "Monofur", "OpenDyslexicMono", "Courier Prime",
+	"Roboto Mono", "Roboto Mono Light", "Roboto Mono Medium", "PT Mono", "Luxi Mono", "MonteCarlo", "Mensch",
 	"Anonymous Pro", "ProggyClean", "Dina", "ProFontWindows", "FixedSys Excelsior 3.01", "Terminus"]
 
 aa_defaults = ["aa1", "aa0"]
@@ -48,6 +49,7 @@ extend_fontInfo("Dina", [8,9,10], ["aa0"])
 extend_fontInfo("ProFontWindows", [7,8,9,10,11,12], ["aa0"])
 extend_fontInfo("FixedSys Excelsior 3.01", [12], ["aa0"])
 extend_fontInfo("Terminus", [10,11,12], ["aa0"])
+extend_fontInfo("MonteCarlo", [10], ["aa0"])
 
 default_fontInfo = {
 	"sizes_aa0": size_defaults,
