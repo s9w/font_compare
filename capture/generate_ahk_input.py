@@ -38,7 +38,9 @@ fonts_names = [
 	"Roboto Mono", "Roboto Mono Light","Roboto Mono Medium",
 	"Source Code Pro Light", "Source Code Pro", "Source Code Pro Medium",
 	"Terminus"
-	"Ubuntu Mono"
+	"Ubuntu Mono",
+
+	"Tamsyn8x16"
 ]
 
 # Some fonts have bitmap versions for small sizes and tt versions for bigger
@@ -110,6 +112,7 @@ extend_font_sizes("Dina", [8,9,10], ["aa0"])
 extend_font_sizes("ProFontWindows", [7,8,9,10,11,12], ["aa0"])
 extend_font_sizes("FixedSys Excelsior 3.01", [12], ["aa0"])
 extend_font_sizes("Terminus", [10,11,12], ["aa0"])
+extend_font_sizes("Tamsyn8x16", [10], ["aa0"])
 extend_font_sizes("MonteCarlo", [10], ["aa0"])
 
 font_infos = {}

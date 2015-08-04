@@ -35,6 +35,7 @@ var urls = {
     "Source Code Pro": "http://adobe-fonts.github.io/source-code-pro/",
     "Source Code Pro Light": "http://adobe-fonts.github.io/source-code-pro/",
     "Source Code Pro Medium": "http://adobe-fonts.github.io/source-code-pro/",
+    "Tamsyn8x16": "http://www.fial.com/~scott/tamsyn-font/",
     "Terminus": "http://terminus-font.sourceforge.net/",
     "Ubuntu Mono": "http://font.ubuntu.com/",
     "PT Mono": "http://www.paratype.com/public/",
