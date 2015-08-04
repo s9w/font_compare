@@ -40,7 +40,8 @@ fonts_names = [
 	"Terminus"
 	"Ubuntu Mono",
 
-	"Tamsyn8x16"
+	"Tamsyn8x16",
+	"Menlo"
 ]
 
 # Some fonts have bitmap versions for small sizes and tt versions for bigger
