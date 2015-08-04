@@ -41,6 +41,10 @@ var urls = {
     "Mensch": "http://robey.lag.net/2010/06/21/mensch-font.html"
 };
 
+function isInArray(array, element){
+    return array.indexOf(element) !== -1;
+}
+
 module.exports = React.createClass({
     selectFont(fontName){
         this.props.selectFont(fontName);
@@ -50,11 +54,12 @@ module.exports = React.createClass({
         for(let i=0; i<fontList.length; i++){
             let fontName = fontList[i];
             var aaMode;
-            //console.log(fontName);
-            if(this.props.useAA==="on")
-                aaMode = (fontInfos[fontName]["sizes_aa1"].indexOf(fontInfos[fontName].defaultSize)!==-1? "aa1" : "aa0");
-            else
+            if(this.props.useAA!=="off" && isInArray(fontInfos[fontName]["aa1"], fontInfos[fontName].default)) {
+                aaMode = {"default": "aa1", "gdipp": "aa2"}[this.props.useAA];
+            }
+            else {
                 aaMode = "aa0";
+            }
 
             var fontElement;
             if(fontName in urls){
@@ -65,7 +70,7 @@ module.exports = React.createClass({
             font_rows.push(
                 <tr key={i}>
                     {fontElement}
-                    <td className={"aa_mode "+aaMode}></td>
+                    <td className={"aa_mode "+ ((aaMode==="aa0")?"aa0":"aa1")}></td>
                     <td>
                         <input
                             type="checkbox"
@@ -74,7 +79,7 @@ module.exports = React.createClass({
                             />
                     </td>
                     <td>
-                        <img src={"trimmed/"+this.props.renderer+"/short_"+this.props.theme.toLowerCase()+"_"+fontName+"_"+fontInfos[fontName].defaultSize+"_"+aaMode+".png"} />
+                        <img src={"trimmed/"+"short_"+this.props.theme.toLowerCase()+"_"+fontName+"_"+fontInfos[fontName].default+"_"+aaMode+".png"} />
                     </td>
                 </tr>
             )

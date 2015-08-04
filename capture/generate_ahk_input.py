@@ -1,66 +1,53 @@
 import copy
 import json
 
-fonts = [
-	"Source Code Pro Light", "Source Code Pro", "Source Code Pro Medium",
-	"Office Code Pro Light", "Office Code Pro", "Office Code Pro Medium",
-	"Meslo LG S", "Meslo LG M", "Meslo LG L",
+fonts_names = [
+	"Anonymous Pro",
+	"Bitstream Vera Sans Mono",
+	"Consolas",
+	"Courier Prime",
+	"DejaVu Sans Mono",
+	"Dina",
+	"Droid Sans Mono",
+	"Envy Code R",
+	"Fantasque Sans Mono",
+	"Fira Mono",
+	"FixedSys Excelsior 3.01",
+	"Hermit",
+	"Inconsolata-dz",
+	"Input",
+	"Iosevka",
+	"Liberation Mono",
+	"Luculent",
+	"Luxi Mono",
 	"M+ 1m regular", "M+ 1m medium", "M+ 1m light",
+	"Mensch",
+	"Meslo LG S", "Meslo LG M", "Meslo LG L",
+	"Monofur",
+	"Monoid",
+	"monoOne",
+	"MonteCarlo",
+	"OCR A Extended",
+	"Office Code Pro Light", "Office Code Pro", "Office Code Pro Medium",
+	"OpenDyslexicMono",
+	"PragmataPro",
+	"ProFontWindows",
+	"ProggyClean",
+	"PT Mono",
+	"Roboto Mono", "Roboto Mono Light","Roboto Mono Medium",
+	"Source Code Pro Light", "Source Code Pro", "Source Code Pro Medium",
+	"Terminus"
+	"Ubuntu Mono"
+]
 
-	"Consolas", "Monoid", "Ubuntu Mono",
-	"Bitstream Vera Sans Mono", "Input",
-	"DejaVu Sans Mono", "Droid Sans Mono", "Fira Mono", "Envy Code R", "monoOne",
-	"Fantasque Sans Mono", "Hermit", "Liberation Mono", "Iosevka", "OCR A Extended", "Inconsolata-dz",
-	"Luculent", "PragmataPro", "Monofur", "OpenDyslexicMono", "Courier Prime",
-	"Roboto Mono", "Roboto Mono Light", "Roboto Mono Medium", "PT Mono", "Luxi Mono", "MonteCarlo", "Mensch",
-	"Anonymous Pro", "ProggyClean", "Dina", "ProFontWindows", "FixedSys Excelsior 3.01", "Terminus"]
+# Some fonts have bitmap versions for small sizes and tt versions for bigger
+# sizes. Bitmap fonts can't have aa, tt can. So the combinations of font size
+# and aa mode has to bet set independently
 
-aa_defaults = ["aa1", "aa0"]
-size_defaults = [8,9,10,11,12]
-fontInfos = {}
+# font_sizes contains the available sizes for the two aa modes
 
-def extend_fontInfo(font, sizes, aa_settings):
-	def get_fontInfo(sizes_param, aa_param):
-		if "aa1" in aa_param:
-			aa_sizes = sizes_param
-		else:
-			aa_sizes = []
-
-		return {
-			"sizes_aa0": sizes_param,
-			"sizes_aa1": aa_sizes
-		}
-	def merge_fontInfo(fontInfo1, fontInfo2):
-		return {
-			"sizes_aa0": fontInfo1["sizes_aa0"] + fontInfo2["sizes_aa0"],
-			"sizes_aa1": fontInfo1["sizes_aa1"] + fontInfo2["sizes_aa1"],
-		}
-
-	if font in fontInfos:
-		fontInfos[font] = merge_fontInfo(fontInfos[font], get_fontInfo(sizes, aa_settings))
-	else:
-		fontInfos[font] = get_fontInfo(sizes, aa_settings)
-
-extend_fontInfo("Anonymous Pro", [7,8,9,10], ["aa0"])
-extend_fontInfo("Anonymous Pro", [11,12], aa_defaults)
-extend_fontInfo("ProggyClean", [9], ["aa0"])
-extend_fontInfo("Iosevka", [8,9,10,11], aa_defaults)
-extend_fontInfo("Dina", [8,9,10], ["aa0"])
-extend_fontInfo("ProFontWindows", [7,8,9,10,11,12], ["aa0"])
-extend_fontInfo("FixedSys Excelsior 3.01", [12], ["aa0"])
-extend_fontInfo("Terminus", [10,11,12], ["aa0"])
-extend_fontInfo("MonteCarlo", [10], ["aa0"])
-
-default_fontInfo = {
-	"sizes_aa0": size_defaults,
-	"sizes_aa1": size_defaults
-}
-
-fontInfos.update({font: default_fontInfo for font in fonts if font not in fontInfos})
-
-inputs = []
-
-default_norm_size = 10
+# For the overview mode we need font samples that should be the same length. Unfortunately there's sometimes little correlation between the size setting and the actual size. So the default size has to be set manually for many fonts.
+default_size = 10
 norm_sizes = {
 	"Anonymous Pro": 11,
 	"Consolas": 11,
@@ -84,25 +71,66 @@ norm_sizes = {
 	"M+ 1m light": 12
 }
 
-for font in fonts:
-	norm_size = norm_sizes.get(font, default_norm_size)
-	fontInfo = copy.copy(fontInfos[font])
-	fontInfo["defaultSize"] = norm_size
-	fontInfos[font] = fontInfo
+font_sizes = {}
+font_sizes_default = {
+	"aa0": [8, 9, 10, 11, 12],
+	"aa1": [8, 9, 10, 11, 12]
+}
 
-for font in fonts:
-	norm_size = norm_sizes.get(font, default_norm_size)
+def extend_font_sizes(font, sizes, aa_settings):
+	def get_fontInfo(aa0_sizes, aa_param):
+		if "aa1" in aa_param:
+			aa1_sizes = aa0_sizes
+		else:
+			aa1_sizes = []
+
+		return {
+			"aa0": aa0_sizes,
+			"aa1": aa1_sizes
+		}
+	def merge_fontInfo(fontInfo1, fontInfo2):
+		return {
+			"aa0": fontInfo1["aa0"] + fontInfo2["aa0"],
+			"aa1": fontInfo1["aa1"] + fontInfo2["aa1"]
+		}
+
+	if font in font_sizes:
+		font_sizes[font] = merge_fontInfo(font_sizes[font], get_fontInfo(sizes, aa_settings))
+	else:
+		font_sizes[font] = get_fontInfo(sizes, aa_settings)
+
+extend_font_sizes("Anonymous Pro", [7,8,9,10], ["aa0"])
+extend_font_sizes("Anonymous Pro", [11, 12], ["aa1", "aa0"])
+extend_font_sizes("ProggyClean", [9], ["aa0"])
+extend_font_sizes("Iosevka", [8, 9, 10, 11], ["aa1", "aa0"])
+extend_font_sizes("Dina", [8,9,10], ["aa0"])
+extend_font_sizes("ProFontWindows", [7,8,9,10,11,12], ["aa0"])
+extend_font_sizes("FixedSys Excelsior 3.01", [12], ["aa0"])
+extend_font_sizes("Terminus", [10,11,12], ["aa0"])
+extend_font_sizes("MonteCarlo", [10], ["aa0"])
+
+font_infos = {}
+for font_name in fonts_names:
+	font_info = {"default": norm_sizes.get(font_name, default_size)}
+	font_info.update(font_sizes.get(font_name, font_sizes_default))
+	font_infos[font_name] = font_info
+
+inputs = []
+
+for font_name, font_info in font_infos.items():
 	for theme in ["light", "dark"]:
 		code_len = "long"
-		for aa in aa_defaults:
-			for size in fontInfos.get(font, default_fontInfo)["sizes_" + aa]:
-				inputs.extend([",".join([code_len, theme, font, str(size), aa]) + "\n"])
+		for aa in ["aa1", "aa0"]:
+			for size in font_info[aa]:
+				input = [",".join([code_len, theme, font_name, str(size), aa]) + "\n"]
+				inputs.extend(input)
 
 		code_len = "short"
-		for aa in aa_defaults:
-			size = norm_sizes.get(font, default_norm_size)
-			if round(size) in fontInfos.get(font, default_fontInfo)["sizes_" + aa]:
-				inputs.extend([",".join([code_len, theme, font, str(size), aa]) + "\n"])
+		for aa in ["aa1", "aa0"]:
+			size = font_info["default"]
+			if round(size) in font_info[aa]:
+				input = [",".join([code_len, theme, font_name, str(size), aa]) + "\n"]
+				inputs.extend(input)
 
 # biggest:
 # long,Input,12,aa1,dark
@@ -111,5 +139,5 @@ with open("ahk_input.csv", "w", encoding="utf-8") as f:
 	f.write("".join(inputs))
 
 with open("../font_info.js", "w", encoding="utf-8") as f:
-	f.write("var fontList = {};\n".format(json.dumps(sorted(fonts, key=str.lower), indent="\t")))
-	f.write("var fontInfos = {};".format(json.dumps(fontInfos, indent="\t")))
+	f.write("var fontList = {};\n".format(json.dumps(sorted(fonts_names, key=str.lower), indent="\t")))
+	f.write("var fontInfos = {};".format(json.dumps(font_infos, indent="\t")))

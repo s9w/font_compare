@@ -5,8 +5,7 @@ var Fonti = React.createClass({
         return({
             mode: "Overview",
             theme: "Light",
-            useAA: "on",
-            renderer: "default",
+            useAA: "default",
             selectedFonts: new Set(["Consolas", "Source Code Pro", "Ubuntu Mono"]),
             zoom: "1x"
         });
@@ -69,25 +68,22 @@ var Fonti = React.createClass({
                         changeFunction={this.changeTest.bind(null, "theme")}
                         label="Theme"
                     />
-                    <Setting
-                        choices={["default", "gdipp"]}
-                        activeSetting={this.state.renderer}
-                        changeFunction={this.changeTest.bind(null, "renderer")}
-                        label="Renderer"
-                        />
+
                     <Setting
                         choices={["Overview", "Compare"]}
                         activeSetting={this.state.mode}
                         changeFunction={this.changeTest.bind(null, "mode")}
                         label="Mode"
-                    />
+                        />
+
                     {this.state.mode==="Overview"&&
                     <Setting
-                        choices={["off", "on"]}
+                        choices={["off", "default", "gdipp"]}
                         activeSetting={this.state.useAA}
                         changeFunction={this.changeTest.bind(null, "useAA")}
                         label="Font Anti-Alias"
                         />}
+
                     {this.state.mode==="Compare"&&
                     <Setting
                         choices={["1x", "2x"]}
@@ -109,10 +105,10 @@ var Compare = React.createClass({
         var fontConfigs = {};
         for(let i=0; i<this.props.selectedFonts.length; i++){
             var fontName = this.props.selectedFonts[i];
-            let defaultSizeInt = Math.round(fontInfos[fontName].defaultSize);
+            let defaultSizeInt = Math.round(fontInfos[fontName].default);
             fontConfigs[fontName] = {
                 size: defaultSizeInt,
-                aa: fontInfos[fontName]["sizes_aa1"].indexOf(defaultSizeInt)!==-1?"aa1":"aa0"
+                aa: fontInfos[fontName]["aa1"].indexOf(defaultSizeInt)!==-1?"aa1":"aa0"
             };
         }
 
@@ -142,9 +138,9 @@ var Compare = React.createClass({
             let fontName = this.props.selectedFonts[i];
 
             let sizes = [];
-            for(let j=0; j<fontInfos[fontName]["sizes_aa0"].length; j++){
-                let size = fontInfos[fontName]["sizes_aa0"][j];
-                var commaStr = (j<fontInfos[fontName]["sizes_aa0"].length-1)?",":"";
+            for(let j=0; j<fontInfos[fontName]["aa0"].length; j++){
+                let size = fontInfos[fontName]["aa0"][j];
+                var commaStr = (j<fontInfos[fontName]["aa0"].length-1)?",":"";
                 sizes.push(
                     <span
                         onClick={this.changeFontMode.bind(null, fontName, "size", size)}
@@ -163,13 +159,20 @@ var Compare = React.createClass({
                     key="0">
                     off</span>
             );
-            if(fontInfos[fontName]["sizes_aa1"].indexOf(this.state.fontConfigs[fontName].size)!==-1) {
+            if(fontInfos[fontName]["aa1"].indexOf(this.state.fontConfigs[fontName].size)!==-1) {
                 aaSettings.push(
                     <span
                         className={"settingChoice" + (this.state.fontConfigs[fontName].aa==="aa1"?" settingActive":"")}
                         onClick={this.changeFontMode.bind(null, fontName, "aa", "aa1")}
                         key="1">
-                        on</span>
+                        default</span>
+                );
+                aaSettings.push(
+                    <span
+                        className={"settingChoice" + (this.state.fontConfigs[fontName].aa==="aa2"?" settingActive":"")}
+                        onClick={this.changeFontMode.bind(null, fontName, "aa", "aa2")}
+                        key="2">
+                        gdipp</span>
                 );
             }
 
@@ -198,9 +201,9 @@ var Compare = React.createClass({
 
         var imgUrl;
         if(this.props.zoom==="2x"){
-            imgUrl = "trimmed/"+this.props.renderer+"/zoom/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"
+            imgUrl = "trimmed/"+"zoom/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"
         }else{
-            imgUrl = "trimmed/"+this.props.renderer+"/long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"
+            imgUrl = "trimmed/"+"long_"+this.props.theme.toLowerCase()+"_"+this.state.activeFont+"_"+sizeStr+"_"+aaStr+".png"
         }
 
         return(
