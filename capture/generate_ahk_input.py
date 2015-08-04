@@ -6,6 +6,7 @@ fonts_names = [
 	"Bitstream Vera Sans Mono",
 	"Consolas",
 	"Courier Prime",
+	"Classic Console",
 	"DejaVu Sans Mono",
 	"Dina",
 	"Droid Sans Mono",
@@ -51,6 +52,7 @@ default_size = 10
 norm_sizes = {
 	"Anonymous Pro": 11,
 	"Consolas": 11,
+	"Classic Console": 16,
 	"Envy Code R": 11,
 	"Fantasque Sans Mono": 11,
 	"Input": 8,
@@ -101,6 +103,7 @@ def extend_font_sizes(font, sizes, aa_settings):
 
 extend_font_sizes("Anonymous Pro", [7,8,9,10], ["aa0"])
 extend_font_sizes("Anonymous Pro", [11, 12], ["aa1", "aa0"])
+extend_font_sizes("Classic Console", [16], ["aa0"])
 extend_font_sizes("ProggyClean", [9], ["aa0"])
 extend_font_sizes("Iosevka", [8, 9, 10, 11], ["aa1", "aa0"])
 extend_font_sizes("Dina", [8,9,10], ["aa0"])

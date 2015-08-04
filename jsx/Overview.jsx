@@ -2,6 +2,7 @@ var urls = {
     "Anonymous Pro": "http://www.marksimonson.com/fonts/view/anonymous-pro",
     "Bitstream Vera Sans Mono": "https://www.gnome.org/fonts/",
     "Courier Prime": "http://quoteunquoteapps.com/courierprime/",
+    "Classic Console": "http://webdraft.hu/fonts/classic-console/",
     "DejaVu Sans Mono": "http://dejavu-fonts.org/",
     "Dina": "https://www.donationcoder.com/Software/Jibz/Dina/",
     "Envy Code R": "https://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released",
