@@ -132,6 +132,21 @@ var Compare = React.createClass({
     removeFont(fontName){
         this.props.removeFont(fontName);
     },
+    onKeyDown(event){
+        if(event.which >= 49 && event.which <= 57){
+            var fontIndex = event.which - 48 - 1;
+            if(fontIndex < this.props.selectedFonts.length){
+                this.activateFont(this.props.selectedFonts[fontIndex]);
+            }
+        }
+    },
+    componentDidMount: function() {
+        document.addEventListener('keydown', this.onKeyDown);
+    },
+
+    componentWillUnmount: function() {
+        document.removeEventListener('keydown', this.onKeyDown);
+    },
     render: function(){
         var fontElList = [];
         for(let i=0; i<this.props.selectedFonts.length; i++){
@@ -176,6 +191,10 @@ var Compare = React.createClass({
                 );
             }
 
+            var hotkeyStr = "( )";
+            if(i<9){
+                hotkeyStr = "(" + (i+1) + ")"
+            }
             fontElList.push(
                 <tr key={fontName}>
                     <td
@@ -184,7 +203,7 @@ var Compare = React.createClass({
                     <td
                         className={"settingLabel" + (this.state.activeFont===fontName?" settingActive":"")}
                         onMouseOver={this.activateFont.bind(null, fontName)}>
-                        {fontName}
+                        {hotkeyStr} {fontName}
                     </td>
                     <td>
                         {sizes}
@@ -213,7 +232,7 @@ var Compare = React.createClass({
                         <tbody>
                             <tr>
                                 <td></td>
-                                <td>Font</td>
+                                <td>(Key) Font</td>
                                 <td>Size</td>
                                 <td>AA</td>
                             </tr>

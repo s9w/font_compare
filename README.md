@@ -8,7 +8,7 @@ Both renderers yield the same result without AA, therefore those three rendering
  
 In the **overview** mode you can quickly compare all available fonts. The green/red square is an indicator for the AA mode. Since there is a global AA toggle it will always stay red (off) for bitmap fonts. The checkboxes select fonts to be compared in more detail in the second mode.
  
-When **comparing**, the code sample is bigger and there is a wider range of font sizes to chose from. Size and rendering mode are set for each font individually. There's always just one sample rendered with the font that's currently selected. Activating different fonts is done by hovering over them. Tthere's also a 2x zoom option for close inspection or people with really high dpi screens. The zoom is filterless without interpolation (1 pixel to 4 pixel).
+When **comparing**, the code sample is bigger and there is a wider range of sizes to chose from. Size and rendering mode are set for each font individually. There's always just one sample rendered with the font that's currently selected. Switching between fonts can be done either by hovering over the name or using the keyboard hotkeys (1-9). There's also a 2x zoom option for close inspection or people with really high dpi screens. The zoom is filterless without interpolation (1 pixel to 4 pixel).
 
 The capturing process is automated so requests for fonts or changes to the code sample are welcome.
 
