@@ -7,7 +7,7 @@ var Fonti = React.createClass({
             mode: "Overview",
             theme: "Light",
             useAA: "default",
-            selectedFonts: new Set(["Consolas", "Source Code Pro", "Ubuntu Mono", "Iosevka"]),
+            selectedFonts: new Set(["Consolas", "Source Code Pro", "Roboto Mono", "Iosevka", "Fira Mono", "PT Mono", "Monoid"]),
             zoom: "1x"
         });
     },

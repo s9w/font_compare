@@ -48,6 +48,12 @@ module.exports = React.createClass({
         document.removeEventListener('keydown', this.onKeyDown);
     },
     render: function(){
+        if(this.props.selectedFonts.length===0){
+            return(
+                <div>No fonts selected</div>
+            );
+        }
+
         var fontElList = [];
         for(let i=0; i<this.props.selectedFonts.length; i++){
             let fontName = this.props.selectedFonts[i];
