@@ -71,13 +71,30 @@ td > img{
 
 .aa_mode{
     width: 1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
-.aa0{
-    background-color: red;
+.Light .aa0{
+    background-color: #ff9ca9;
 }
-.aa1{
-    background-color: green;
+.Light .aa1{
+    background-color: #a8ffa5;
+}
+.Dark .aa0{
+    background-color: #8b0709;
+}
+.Dark .aa1{
+    background-color: #00871f;
 }
 .contentContainer{
 
+}
+table{
+    border-collapse: collapse;
+}
+.Light .firstRow{
+    background-color: #e5e5e5;
+}
+.Dark .firstRow{
+    background-color: #5a5a5a;
 }

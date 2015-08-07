@@ -123,7 +123,7 @@ module.exports = React.createClass({
                 <div className="borderBelow">
                     <table>
                         <tbody>
-                        <tr>
+                        <tr className="firstRow">
                             <td></td>
                             <td>(Key) Font</td>
                             <td>Size</td>

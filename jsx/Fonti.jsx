@@ -18,10 +18,20 @@ var Fonti = React.createClass({
     },
     selectFont: function(fontName){
         var newSelectedFonts = this.state.selectedFonts;
-        if(this.state.selectedFonts.has(fontName))
-            newSelectedFonts.delete(fontName);
-        else
-            newSelectedFonts.add(fontName);
+        if(fontName === "all"){
+            if(this.state.selectedFonts.size === fontList.length){
+                newSelectedFonts.clear();
+            }else{
+                newSelectedFonts = new Set(fontList);
+            }
+        }
+        else{
+            if(this.state.selectedFonts.has(fontName))
+                newSelectedFonts.delete(fontName);
+            else
+                newSelectedFonts.add(fontName);
+        }
+
         this.setState({selectedFonts: newSelectedFonts});
     },
     removeFont(fontName){

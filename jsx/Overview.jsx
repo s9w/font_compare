@@ -75,7 +75,9 @@ module.exports = React.createClass({
             font_rows.push(
                 <tr key={i}>
                     {fontElement}
-                    <td className={"aa_mode "+ ((aaMode==="aa0")?"aa0":"aa1")}></td>
+                    <td className={"aa_mode "+ ((aaMode==="aa0")?"aa0":"aa1")}>
+                        {(aaMode==="aa0")?"off":"on"}
+                    </td>
                     <td>
                         <input
                             type="checkbox"
@@ -100,6 +102,18 @@ module.exports = React.createClass({
         return(
             <table>
                 <tbody>
+                <tr className="firstRow">
+                    <td>Font</td>
+                    <td>AA</td>
+                    <td>
+                        <input
+                            type="checkbox"
+                            checked={this.props.selectedFonts.size === fontList.length}
+                            onChange={this.selectFont.bind(null, "all")}
+                        />
+                    </td>
+                    <td></td>
+                </tr>
                 {font_rows}
                 </tbody>
             </table>
