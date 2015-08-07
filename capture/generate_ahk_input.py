@@ -16,12 +16,12 @@ fonts_names = [
 	"FixedSys Excelsior 3.01",
 	"Hermit",
 	"Inconsolata-dz",
-	"Input",
 	"Iosevka",
 	"Liberation Mono",
 	"Luculent",
 	"Luxi Mono",
 	"M+ 1m regular", "M+ 1m medium", "M+ 1m light",
+	"Menlo",
 	"Mensch",
 	"Meslo LG S", "Meslo LG M", "Meslo LG L",
 	"Monofur",
@@ -37,11 +37,12 @@ fonts_names = [
 	"PT Mono",
 	"Roboto Mono", "Roboto Mono Light","Roboto Mono Medium",
 	"Source Code Pro Light", "Source Code Pro", "Source Code Pro Medium",
+	"Tamsyn8x16",
 	"Terminus",
 	"Ubuntu Mono",
 
-	"Tamsyn8x16",
-	"Menlo"
+	"InputMono",
+	"InputMonoCondensed",
 ]
 
 # Some fonts have bitmap versions for small sizes and tt versions for bigger
@@ -58,7 +59,6 @@ norm_sizes = {
 	"Classic Console": 16,
 	"Envy Code R": 11,
 	"Fantasque Sans Mono": 11,
-	"Input": 8,
 	"Monoid": 11,
 	"monoOne": 10.5,
 	"ProFontWindows": 12,
@@ -124,7 +124,8 @@ for font_name in fonts_names:
 
 inputs = []
 
-for font_name, font_info in font_infos.items():
+for font_name in fonts_names:
+	font_info = font_infos[font_name]
 	for theme in ["light", "dark"]:
 		code_len = "long"
 		for aa in ["aa1", "aa0"]:
