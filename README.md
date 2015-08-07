@@ -1,4 +1,4 @@
-# Programming font comparison
+# [Programming font comparison](http://s9w.github.io/font_compare/)
 
 Compares the most common fixed-width programming fonts. All font samples are from actual screenshots of the font taken under Windows 7 with Sublime Text.
 
@@ -15,21 +15,28 @@ The capturing process is automated so requests for fonts or changes to the code 
 ## code sample
 The code sample was chosen to showcase most common characters and problems with fonts. The characters in the first line after the alphanumerics are:
 
-	- the number one
-	- Big i (indiana)
-	- small L (lambda)
-	- vertical bar
-	- big L
+- the number one
+- Big i (indiana)
+- small L (lambda)
+- vertical bar
+- big L
+
+
+- number eight
+- number zero
+- big O (oregano)
+- small o
+
+
+- number five
+- big S (superman)
 	
-	- number eight
-	- number zero
-	- big O (oregano)
-	- small o
-	
-	- number five
-	- big S (superman)
-	
-Followed by some brackets, special characters, double underscore and a "hashtag".
+Followed by some brackets, special characters and double underscore among other things. Then come a number of different quotation marks. I'll list the unicodes to avoid confusion
+
+- straight double: "q" ([U+0022](http://unicode-table.com/en/0022/))
+- straight single / apostrophe: 'q' ([U+0027](http://unicode-table.com/en/0027/))
+- curly/curved double left and right: “q” ([U+201C](http://unicode-table.com/en/201C/) and [U+201D](http://unicode-table.com/en/201D/))
+- curly/curved single left and right: ‘q’ ([U+2018](http://unicode-table.com/en/2018/) and [U+2019](http://unicode-table.com/en/2019/))
 
 ## Font-specific notes
 - **Monoid** and **Input** are both highly customizable, offering alternatives for commonly controversial letters. This site features only the default versions.
