@@ -9,6 +9,7 @@ var urls = {
     "Fantasque Sans Mono": "https://github.com/belluzj/fantasque-sans",
     "Fira Mono": "https://mozilla.github.io/Fira/",
     "FixedSys Excelsior 3.01": "http://www.fixedsysexcelsior.com/",
+    "Hack": "https://github.com/chrissimpkins/Hack",
     "Hermit": "https://pcaro.es/p/hermit/",
     "Inconsolata-dz": "http://nodnod.net/2009/feb/12/adding-straight-single-and-double-quotes-inconsola/",
     "InputMono": "http://input.fontbureau.com/",
