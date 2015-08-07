@@ -63,7 +63,7 @@ DoIt(codeLen, color, FontName, FontSize, aa)
 
 	FontNameDashed := RegExReplace(FontName, " ", "-")
 
-	Run, c:\code\font_compare\capture\nircmd.exe savescreenshotwin "C:\code\font_compare\capture\ss\%codeLen%_%color%_%FontNameDashed%_%FontSize%_%aa%.png"
+	Run, c:\code\font_compare\capture\nircmd.exe savescreenshotwin "C:\code\font_compare\capture\ss\%codeLen%_%color%_%FontNameDashed%_%FontSize%_aa2.png"
 }
 
 Loop, read, c:\code\font_compare\capture\ahk_input.csv
@@ -72,5 +72,7 @@ Loop, read, c:\code\font_compare\capture\ahk_input.csv
     {
     	Field%A_Index% := A_LoopField
     }
-    DoIt(Field1, Field2, Field3, Field4, Field5)
+    if (Field5="aa1"){
+    	DoIt(Field1, Field2, Field3, Field4, Field5)
+    }
 }

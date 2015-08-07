@@ -47,6 +47,8 @@ function isInArray(array, element){
     return array.indexOf(element) !== -1;
 }
 
+var FontImage = require('./FontImage.jsx');
+
 module.exports = React.createClass({
     selectFont(fontName){
         this.props.selectFont(fontName);
@@ -69,6 +71,7 @@ module.exports = React.createClass({
             }else{
                 fontElement = <td>{fontName}</td>;
             }
+
             font_rows.push(
                 <tr key={i}>
                     {fontElement}
@@ -81,7 +84,14 @@ module.exports = React.createClass({
                             />
                     </td>
                     <td>
-                        <img src={"trimmed/"+"short_"+this.props.theme.toLowerCase()+"_"+fontName+"_"+fontInfos[fontName].default+"_"+aaMode+".png"} />
+                        <FontImage
+                            zoom="1x"
+                            sampleSize="short"
+                            theme={this.props.theme}
+                            fontName={fontName}
+                            sizeStr={fontInfos[fontName].default}
+                            aaStr={aaMode}
+                            />
                     </td>
                 </tr>
             )
