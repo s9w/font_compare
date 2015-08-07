@@ -37,7 +37,7 @@ fonts_names = [
 	"PT Mono",
 	"Roboto Mono", "Roboto Mono Light","Roboto Mono Medium",
 	"Source Code Pro Light", "Source Code Pro", "Source Code Pro Medium",
-	"Terminus"
+	"Terminus",
 	"Ubuntu Mono",
 
 	"Tamsyn8x16",
