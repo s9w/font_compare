@@ -16,7 +16,7 @@ var urls = {
     "InputMonoCondensed": "http://input.fontbureau.com/",
     "Iosevka": "http://be5invis.github.io/Iosevka/",
     "Liberation Mono": "https://fedorahosted.org/liberation-fonts/",
-    "Luculent": "Luculent",
+    "Luculent": "http://eastfarthing.com/luculent/",
     "M+ 1m light": "http://mplus-fonts.osdn.jp/mplus-outline-fonts/index-en.html",
     "M+ 1m medium": "http://mplus-fonts.osdn.jp/mplus-outline-fonts/index-en.html",
     "M+ 1m regular": "http://mplus-fonts.osdn.jp/mplus-outline-fonts/index-en.html",
