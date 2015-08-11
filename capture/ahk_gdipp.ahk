@@ -63,7 +63,18 @@ DoIt(codeLen, color, FontName, FontSize, aa)
 
 	FontNameDashed := RegExReplace(FontName, " ", "-")
 
-	Run, c:\code\font_compare\capture\nircmd.exe savescreenshotwin "C:\code\font_compare\capture\ss\%codeLen%_%color%_%FontNameDashed%_%FontSize%_aa2.png"
+	FontSizeStr := ""
+	if (codeLen="long"){
+		FontSizeStr := FontSize
+	}else{
+		if (FontSize > 15){
+			FontSizeStr := "big"
+		}else{
+			FontSizeStr := "small"
+		}
+	}
+
+	Run, c:\code\font_compare\capture\nircmd.exe savescreenshotwin "C:\code\font_compare\capture\ss\%codeLen%_%color%_%FontNameDashed%_%FontSizeStr%_aa2.png"
 }
 
 Loop, read, c:\code\font_compare\capture\ahk_input.csv

@@ -9,20 +9,12 @@ js/script.js: jsx/* Makefile
 
 .PHONY: trimmed_default
 trimmed_default: capture/ss/*.png
-	mkdir trimmed\1x
-	mkdir trimmed\2x
-	mv capture/ss/* trimmed/1x
-	mogrify -crop 1200x600+12+84 -trim trimmed/1x/*.png
-	mogrify -background "#222222" -splice 1x0 trimmed/1x/short_dark_*_aa0.png
-	mogrify -background "#fafafa" -splice 1x0 trimmed/1x/short_light_*_aa0.png
-	cp trimmed/1x/*.png trimmed/2x
-	mogrify -filter Point -resize 200% trimmed/2x/*.png
+	mv capture/ss/* trimmed
+	mogrify -crop 1888x1000+5+79 -trim trimmed/*.png
+	mogrify -background "#222222" -splice 1x0 trimmed/short_dark_*_aa0.png
+	mogrify -background "#fafafa" -splice 1x0 trimmed/short_light_*_aa0.png
 
 .PHONY: trimmed_gdipp
 trimmed_gdipp: capture/ss/*.png
-	mkdir trimmed\1x
-	mkdir trimmed\2x
-	mv capture/ss/* trimmed/1x
-	mogrify -crop 1200x600+12+84 -trim trimmed/1x/*.png
-	cp trimmed/1x/*.png trimmed/2x
-	mogrify -filter Point -resize 200% trimmed/2x/*.png
+	mv capture/ss/* trimmed
+	mogrify -crop 1888x1000+5+79 -trim trimmed/*.png

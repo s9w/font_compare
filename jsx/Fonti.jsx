@@ -8,7 +8,7 @@ var Fonti = React.createClass({
             theme: "Light",
             useAA: "default",
             selectedFonts: new Set(["Consolas", "Source Code Pro", "Roboto Mono", "Iosevka", "Fira Mono", "PT Mono", "Monoid"]),
-            zoom: "1x"
+            overviewSize: "small"
         });
     },
     changeTest(settingName, newValue){
@@ -50,6 +50,7 @@ var Fonti = React.createClass({
                 renderer={this.state.renderer}
                 selectFont={this.selectFont}
                 selectedFonts={this.state.selectedFonts}
+                overviewSize={this.state.overviewSize}
                 />;
         }
         else if(this.state.mode==="Compare"){
@@ -65,7 +66,6 @@ var Fonti = React.createClass({
                     selectedFonts={selectedFonts}
                     renderer={this.state.renderer}
                     theme={this.state.theme}
-                    zoom={this.state.zoom}
                     removeFont={this.removeFont}
                 />;
         }
@@ -95,13 +95,13 @@ var Fonti = React.createClass({
                         label="Font Anti-Alias"
                         />}
 
-                    {this.state.mode==="Compare"&&
+                    {this.state.mode==="Overview"&&
                     <Setting
-                        choices={["1x", "2x"]}
-                        activeSetting={this.state.zoom}
-                        changeFunction={this.changeTest.bind(null, "zoom")}
-                        label="Zoom"
-                        />}
+                        choices={["small", "big"]}
+                        activeSetting={this.state.overviewSize}
+                        changeFunction={this.changeTest.bind(null, "overviewSize")}
+                        label="Font size"
+                    />}
                 </div>
                 <div className="contentContainer">
                     {content}

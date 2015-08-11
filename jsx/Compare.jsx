@@ -5,7 +5,7 @@ module.exports = React.createClass({
         var fontConfigs = {};
         for(let i=0; i<this.props.selectedFonts.length; i++){
             var fontName = this.props.selectedFonts[i];
-            let defaultSizeInt = Math.round(fontInfos[fontName].default);
+            let defaultSizeInt = Math.round(fontInfos[fontName].defaultSmall);
             fontConfigs[fontName] = {
                 size: defaultSizeInt,
                 aa: fontInfos[fontName]["aa1"].indexOf(defaultSizeInt)!==-1?"aa1":"aa0"
@@ -142,7 +142,6 @@ module.exports = React.createClass({
 
                 <div className={"fontContainer"}>
                     <FontImage
-                        zoom={this.props.zoom}
                         sampleSize="long"
                         theme={this.props.theme}
                         fontName={this.state.activeFont}

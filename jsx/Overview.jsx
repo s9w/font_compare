@@ -59,8 +59,16 @@ module.exports = React.createClass({
         var font_rows = [];
         for(let i=0; i<fontList.length; i++){
             let fontName = fontList[i];
+
+            var defaultSize;
+            if(this.props.overviewSize === "small" || !(isInArray(fontInfos[fontName]["aa1"], fontInfos[fontName]["defaultBig"]))){
+                defaultSize = fontInfos[fontName]["defaultSmall"];
+            }else{
+                defaultSize = fontInfos[fontName]["defaultBig"];
+            }
+
             var aaMode;
-            if(this.props.useAA!=="off" && isInArray(fontInfos[fontName]["aa1"], fontInfos[fontName].default)) {
+            if(this.props.useAA!=="off" && isInArray(fontInfos[fontName]["aa1"], defaultSize)) {
                 aaMode = {"default": "aa1", "gdipp": "aa2"}[this.props.useAA];
             }
             else {
@@ -89,11 +97,10 @@ module.exports = React.createClass({
                     </td>
                     <td>
                         <FontImage
-                            zoom="1x"
                             sampleSize="short"
                             theme={this.props.theme}
                             fontName={fontName}
-                            sizeStr={fontInfos[fontName].default}
+                            sizeStr={defaultSize}
                             aaStr={aaMode}
                             />
                     </td>
