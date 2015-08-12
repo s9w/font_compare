@@ -90,6 +90,7 @@ var Fonti = React.createClass({
                     {this.state.mode==="Overview"&&
                     <Setting
                         choices={["off", "default", "gdipp"]}
+                        labels={["off", "ClearType", "gdipp"]}
                         activeSetting={this.state.useAA}
                         changeFunction={this.changeTest.bind(null, "useAA")}
                         label="Font Anti-Alias"
@@ -98,6 +99,7 @@ var Fonti = React.createClass({
                     {this.state.mode==="Overview"&&
                     <Setting
                         choices={["small", "big"]}
+                        labels={["Small (~10)", "Big (~20)"]}
                         activeSetting={this.state.overviewSize}
                         changeFunction={this.changeTest.bind(null, "overviewSize")}
                         label="Font size"
@@ -118,10 +120,14 @@ var Setting = React.createClass({
     render: function(){
         var thisOuter = this;
         var buttons = this.props.choices.map(function(value, i){
+            var label = value;
+            if("labels" in thisOuter.props){
+                label = thisOuter.props.labels[i];
+            }
             return <span
                 className={"settingChoice"+(thisOuter.props.activeSetting===value?" settingActive":"")}
                 onClick={thisOuter.changeSetting.bind(null, value)}
-                key={i}>{value}</span>;
+                key={i}>{label}</span>;
         });
 
         return(
