@@ -76,6 +76,7 @@ add_font(name="Ubuntu Mono", default_size_small=12, default_size_big=23, aa_size
 add_font(name="InputMono", default_size_big=19, aa_sizes={"aa0": [8, 9, 10, 11, 12, 19],"aa1": [8, 9, 10, 11, 12, 19]})
 add_font(name="InputMonoCondensed", default_size_big=19, aa_sizes={"aa0": [8, 9, 10, 11, 12, 19],"aa1": [8, 9, 10, 11, 12, 19]})
 add_font(name="Hack")
+add_font(name="Andale Mono")
 
 inputs = []
 
