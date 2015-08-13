@@ -99,7 +99,7 @@ var Fonti = React.createClass({
                     {this.state.mode==="Overview"&&
                     <Setting
                         choices={["small", "big"]}
-                        labels={["Small (~10)", "Big (~20)"]}
+                        labels={["Small (12-14)", "Big (20-23)"]}
                         activeSetting={this.state.overviewSize}
                         changeFunction={this.changeTest.bind(null, "overviewSize")}
                         label="Font size"
