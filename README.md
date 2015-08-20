@@ -2,9 +2,9 @@
 
 Compares the most common fixed-width programming fonts. All font samples are from actual screenshots of the font taken under Windows 7 with Sublime Text.
 
-There is also the choice between AA (anti-aliasing) turned off and two other settings: "default" and "gdipp". Those relate to the method used to smooth the font. The default mode is Windows ClearType. [*gdipp*](https://code.google.com/p/gdipp/) is an alternative open-source text renderer that aims to "bring to you the effect of text like Mac OS and Linux". This is an optional install for Windows and can not be guaranteed to exactly replicate the rendering of other operating systems.
+There is the choice between AA (anti-aliasing) turned off and two other rendering settings: ClearType and gdipp. ClearType is the default for Windows, [*gdipp*](https://code.google.com/p/gdipp/) is an alternative open-source text renderer that aims to "bring to you the effect of text like Mac OS and Linux". This is an optional install for Windows and can not be guaranteed to exactly replicate the rendering of other operating systems.
 
-Both renderers yield the same result without AA, therefore those three rendering options are combined. Note that the difference between default and gdipp rendering varies between fonts. There are also bitmap fonts that are stored pixel-perfect and therefore should not (and usually can't) be anti-aliased.
+Both renderers yield the same result without AA, therefore those three rendering options are combined. Note that the difference between ClearType and gdipp rendering varies between fonts. There are also bitmap fonts that are stored pixel-perfect and therefore should not (and usually can't) be anti-aliased.
  
 In the **overview** mode you can quickly compare all available fonts. The green/red square is an indicator for the AA mode. Since there is a global AA toggle it will always stay red (off) for bitmap fonts. The checkboxes select fonts to be compared in more detail in the second mode.
  
@@ -13,6 +13,9 @@ When **comparing**, the code sample is bigger and there is a wider range of size
 The capturing process is automated so requests for fonts or changes to the code sample are welcome.
 
 ## code sample
+
+![code sample image](http://s9w.github.io/font_compare/trimmed/long_light_Consolas_14_aa1.png)
+
 The code sample was chosen to showcase most common characters and problems with fonts. The characters in the second line under the alphanumerics are:
 
 	- 1: The number one
@@ -21,12 +24,10 @@ The code sample was chosen to showcase most common characters and problems with 
 	- |: Vertical bar
 	- L: Big L
 	
-	
 	- 8: number eight
 	- 0: number zero
 	- O: big O (Oregano)
 	- o: small O
-	
 	
 	- number five
 	- big S (superman)
