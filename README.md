@@ -39,7 +39,9 @@ Followed by some brackets, special characters and double underscore among other 
 - curly/curved double left and right: “q” ([U+201C](http://unicode-table.com/en/201C/) and [U+201D](http://unicode-table.com/en/201D/))
 - curly/curved single left and right: ‘q’ ([U+2018](http://unicode-table.com/en/2018/) and [U+2019](http://unicode-table.com/en/2019/))
 
-The big code sample contains a **bold** and a *italic* word in the 10th line: `render` is rendered bold, `function` is italic. Of course only if the font supports it.
+The third line has a couple of unicode characters: The plusminus sign, Ellipsis, multiplication sign, middle dot.
+
+The big code sample contains a **bold** and a *italic* word in the 11th line: `render` is rendered bold, `function` is italic. Of course only if the font supports it.
 
 ## Font-specific notes
 - **Monoid** and **Input** are both highly customizable, offering alternatives for commonly controversial letters. This site features only the default versions.
