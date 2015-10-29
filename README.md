@@ -32,12 +32,14 @@ The code sample was chosen to showcase most common characters and problems with 
 	- number five
 	- big S (superman)
 	
-Followed by some brackets, special characters and double underscore among other things. Then come a number of different quotation marks. I'll list the unicodes to avoid confusion
+Followed by some brackets, special characters and double underscore among other things. In this sequence there are three different kinds of dashes. The first is a normal dash or "Hyphen-Minus": "-" ([U+002D](http://unicode-table.com/en/002D/)), then an en dash ([U+2013](http://unicode-table.com/en/2013/)), then an em dash ([U+2014](http://unicode-table.com/en/2014/)).
+ 
+Then come a number of different quotation marks. I'll list the unicodes to avoid confusion
 
 - straight double: "q" ([U+0022](http://unicode-table.com/en/0022/))
 - straight single / apostrophe: 'q' ([U+0027](http://unicode-table.com/en/0027/))
-- curly/curved double left and right: “q” ([U+201C](http://unicode-table.com/en/201C/) and [U+201D](http://unicode-table.com/en/201D/))
-- curly/curved single left and right: ‘q’ ([U+2018](http://unicode-table.com/en/2018/) and [U+2019](http://unicode-table.com/en/2019/))
+- curly/curved double left and right: ï¿½qï¿½ ([U+201C](http://unicode-table.com/en/201C/) and [U+201D](http://unicode-table.com/en/201D/))
+- curly/curved single left and right: ï¿½qï¿½ ([U+2018](http://unicode-table.com/en/2018/) and [U+2019](http://unicode-table.com/en/2019/))
 
 The third line has a couple of unicode characters: The plusminus sign, Ellipsis, multiplication sign, middle dot.
 
