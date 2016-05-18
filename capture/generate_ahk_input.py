@@ -79,6 +79,7 @@ add_font(name="Hack", default_size_small=13, aa_sizes={"aa0": [8, 9, 10, 11, 12,
 add_font(name="Andale Mono")
 add_font(name="Lucida Console")
 add_font(name="mononoki", default_size_small=13, default_size_big=21, aa_sizes={"aa0": [8, 9, 10, 11, 12,13,14,21],"aa1": [8, 9, 10, 11, 12,13,14,21]})
+add_font(name="NanumGothicCoding", default_size_small=13, default_size_big=21, aa_sizes={"aa0": [8, 9, 10, 11, 12,13,14,21],"aa1": [8, 9, 10, 11, 12,13,14,21]})
 
 inputs = []
 
