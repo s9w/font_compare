@@ -26,6 +26,7 @@ var urls = {
     "Monofur": "http://eurofurence.net/monofur.html",
     "Monoid": "http://larsenwork.com/monoid/",
     "monoOne": "https://github.com/madmalik/monoOne",
+    "mononoki": "https://madmalik.github.io/mononoki/",
     "OCR A Extended": "http://cooltext.com/Download-Font-OCR+A+Extended",
     "Office Code Pro": "https://github.com/nathco/office-code-pro",
     "Office Code Pro Light": "https://github.com/nathco/office-code-pro",
