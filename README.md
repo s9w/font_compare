@@ -1,4 +1,4 @@
-# [Programming font comparison](http://s9w.github.io/font_compare/)
+# [Programming font comparison](http://www.s9w.io/font_compare/)
 
 Compares the most common fixed-width programming fonts. All font samples are from actual screenshots of the font taken under Windows 7 with Sublime Text.
 
