@@ -14,7 +14,7 @@ function fontUrl(sampleSize, theme, fontName, size, aaMode){
             sizeStr = "small";
     }
 
-    url += fontName.replace(/ /g, "-")+"_"+sizeStr+"_"+aaMode+".png";
+    url += fontName.replace(/ /g, "-").replace(/\//g, "-")+"_"+sizeStr+"_"+aaMode+".png";
     return url;
 }
 
