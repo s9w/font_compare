@@ -62,7 +62,7 @@ DoIt(codeLen, color, FontName, FontSize, aa)
 	; MsgBox, %ss_filename%
 
 	FontNameDashed := RegExReplace(FontName, " ", "-")
-	FontNameDashed := RegExReplace(FontName, "/", "-")
+	FontNameDashed := RegExReplace(FontNameDashed, "/", "-")
 
 	FontSizeStr := ""
 	if (codeLen="long"){
