@@ -83,6 +83,7 @@ add_font(name="NanumGothicCoding", default_size_small=15, default_size_big=23, a
 add_font(name="Anka/Coder")
 add_font(name="SF Mono", aa_sizes={"aa0": [10, 11, 12,14, 20],"aa1": [10, 11, 12,14, 20]})
 add_font(name="Space Mono")
+add_font(name="IBM 3270", default_size_small=12, default_size_big=22, aa_sizes={"aa0": [11,12,16,22],"aa1": [11,12,16,22]})
 
 inputs = []
 
